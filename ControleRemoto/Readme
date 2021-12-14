@@ -1,0 +1,5 @@
+Código feito para treinamento de Encapsulamento, um dos pilares da programação orientada a objetos
+
+Controlador -> Interface
+ControleRemoto -> Classe
+ControleRemoto-Index -> é onde usei para testar o encapsulamento
