@@ -1,0 +1,110 @@
+interface Controlador{
+    //metodos abstrados
+    publico abstrado Metodo ligar()
+    publico abstrado Metodo desligar()
+    publico abstrado Metodo abrirMenu()
+    publico abstrado Metodo fecharMenu()
+    publico abstrado Metodo maisVolume()
+    publico abstrado Metodo menosVolume()
+    publico abstrado Metodo ligarMudo()
+    publico abstrado Metodo desligarMudo()
+    publico abstrado Metodo play()
+    publico abstrado Metodo pause()
+FimInterface
+
+-----------------------------------------
+//Fazendo a classe agora
+
+classe ControleRemoto implementa Conolador//chamando minha interface
+    //sobresescrevendo os metodos da interface
+    publico metodo Ligar(){
+        setLigado(verdadeiro)
+    }
+    publico metod desligar(){
+        setLigado(false)
+    }
+    publico abrirMenu(){
+        escreva(getLigado())
+        escreva(getVolume())
+        para i = 0 ate getVolume() passo 10 faça{
+            escreva("i")}
+        escreva(getTocando())
+    }
+    publico metodo fecharMenu(){
+        escreva("fechando menu")
+    }
+
+    publico metodo maisVolume(){
+        se (getLigado()) então {
+            setVolume(setVolume() + 1)
+        }
+    }
+
+    publico metodo menosVolume(){
+        se (getLigado()) então {
+            setVolume(setVolume() - 1)
+        }
+    }
+
+    publico metodo ligarMudo(){
+        se (getLigado() e getVolume() > 0) então {
+            
+        }
+    }
+
+    publico metodo desligarMudo(){
+        se (getLigado() e getVolume() = 0 ){
+            setVolume(50)
+        }
+    }
+
+    publico metodo play(){
+        se (getLigado() e não getTocando()){
+            setTocando(true)
+        }
+    }
+
+    publico metodo pause(){
+        se (getLigado() e não getTocando()){
+            setTocando(false)
+        }
+    }
+
+    //atributos
+    privado inteiro volume
+    privado logico ligado
+    privado logico tocando
+
+    //metodos especiais
+    publico metodo contrutor(){
+        volume = 50;
+        ligado = false;
+        tocando = false;
+    }
+
+    privado metodo getVolume(){
+        return Volume
+    }
+
+    privado metodo getLigado(){
+        return 
+    }
+
+    privado metodo getTocando(){
+        return volume
+    }
+
+    privado metodo setVolume(v: inteiro){
+        volume = v
+    }
+
+    privado metodo setLigado(l: logico){
+        ligado = 1
+    }
+
+    privado metodo setTocando(t: logico){
+        tocando = t
+    }
+
+
+-----fim da classe
