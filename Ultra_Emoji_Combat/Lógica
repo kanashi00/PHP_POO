@@ -1,0 +1,235 @@
+classe Lutador{
+//atributos
+
+privado nome :caractere 
+privado nacionalidade :caractere
+privado idade :inteiro
+privado altura :real
+privado peso :real
+privado categoria :caractere
+privado vitorias :inteiro
+privado derrotas :inteiro
+privado empate: inteiro
+
+//metodos
+publico metodo apresentar(){
+    Escreva("Lutador: ", getNome())
+    Escreva("Origem:", getNacionalidade())
+    Escreva(getIdaded(),"anos")
+    Escreva(getAltura(), "m de altura" )
+    Escreva("Pesando", getPeso())
+    Escreva("Ganhou:", getVitorias())
+    Escreva(Perdeu:", getDerrotas())
+    Escreva("Empatou:", getEmpates())
+}
+
+publico metodo status(){
+    Escreva(getNome)
+    Escreva("é um peso", getCategoria)
+    Escreva(getVitorias,"vitorias")
+    Escreva(getDerrotas,"derrotas")
+    Escreva(getEmpates,"empates")
+}
+
+publico metodo ganharLutar(){
+    setVitorias(getVitorias() + 1)
+}
+
+publico metodo perderLuta(){
+    setDerrotas(getDerrotas() + 1)
+}
+    
+publico metodo empatarLuta(){
+    setEmpates(getEmpates() + 1)
+}
+
+
+//metodo especiais
+publico metodo construtuor(no: caractere, na: caractere, id: inteiro, al: real, pe: real, vi: inteiro, de: inteiro)
+{
+    nome = no
+    nacionalidade = na
+    idade = id
+    altura = altura
+    setPeso(pe)
+    vitorias = vi
+    derrotas = de
+    empates = em
+
+} 
+
+publico metodo getNome{
+    return nome
+}
+
+publico mmetodo setNome(no: caractere){
+    nome = no
+}
+
+publico metodo getPeso{
+    return peso;
+}
+
+publico metodo setPeso(pe: caractere){
+    peso = pe
+    set categoria() //sempre que eu configurar o peso vou configurar a categoria automaticamento 
+}
+
+publico metodo setCategoria (){ //sempre que eu mudar o peso automaticamente teremos a definição de categoria com isso
+    se (peso<52.2) então{
+        categoria = invalido
+    }
+    senão se(peso<= 70.3) então{
+        categoria = leve
+    }
+    senão se (peso<=83.9) então{
+        categoria = medio
+    }
+    senão se (peso<=120.2) então{
+        categoria = pesado
+    }
+    senão{
+        categoria = invalido
+    }
+
+}
+
+publico metodo getCategoria{
+    return categoria
+}
+
+publico metodo getIdaded{
+    return idade
+}
+
+publico mmetodo setIdade(id: inteiro){
+    idade = id
+}
+
+publico metodo getNacionalidade{
+    return nacionalidade
+}
+
+publico mmetodo setNacionalidade(na: caractere){
+    nacionalidade = na
+}
+
+publico metodo getAltura{
+    return altura
+}
+
+publico mmetodo setAltura(al: real){
+    altura = al
+}
+
+publico metodo getVitorias{
+    return vitorias
+}
+
+publico mmetodo setVitorias(vi: inteiro){
+    vitorias = vi
+}
+
+publico metodo getDerrotas{
+    return derrotas
+}
+
+publico mmetodo setDerrotas(de: inteiro){
+    derrotas = de
+}
+
+publico metodo getEmpates{
+    return empates
+}
+
+publico metodo setEmpates(em: inteiro){
+    empates = em
+}
+
+------------------------------------------------
+
+//CLASSE Luta
+REGRAS DA LUTA:
+    - Só pode ser marcada entre jogadpres da mesma categoria;
+    - Desafiado e Desafiante devem ser lutadores diferentes;
+    - Só pode acontecer se a luta estiver aprovada;
+    - Só pode ter como resultado a vitória de um dos lutadores ou o empate;
+
+---------------------------------------------------
+classe Luta{
+    //atributos
+    privado desafiado :Lutador //é um tipo abstrato
+    privado desafiante :Lutador
+    privado rounds :inteiro
+    privado aprovada :logico
+
+    //metodos
+    publico metodo marcarLuta(l1,l2 :lutador){
+        se ((l1.getCategoria() = l2.getCategoria()) e (l1 <> l2) ) então { //l1<>l2 signifca diferente
+            aprovada = true;
+            desafiado = l1;
+            desafiante = l2;
+        }
+        senão{
+            aprovada = false;
+            dasafiado = null;
+            dasafiante = null;
+        }
+    }
+
+    publico metodo lutar(){
+        se (aprovada) então{
+            desafiado.apresentar()
+            desafiante.apresentar()
+            vencedor = aleatorio(0..2)
+            escolha (vencedor){
+                caso 0: //empate
+                    Escreva("empatou")
+                    desafiado.empatarLuta()
+                    desafiante.empatarLuta()
+
+                caso 1: //desafiado Ganhou
+                    Escreva(Desafiado.getNome())
+                    desafiado.ganharLutar()
+                    desafiante.perderLuta()
+
+                caso 2: //desafiante Ganhou
+                    Escreva(desafiante.getNome())
+                    desafiante.ganharLutar()
+                    desafiado.perderLuta()
+            }fimEscolha
+
+        }
+
+        senão {
+            Escreva("Luta não aprovada")
+        }
+    }
+
+    //metodos especiais
+    publico metodo setDesafiado(dd :Lutador){
+        desafiado = dd
+    }
+
+    publico metodo getDesafiado(){
+        return desafiado
+    }
+
+
+}
+
+
+-------------------------------------------------
+//PROGRAMA PRINCIPAL (fora da classe)
+    L: vator[0..5] 
+    L[0] = novo Lutador("Pretty Boy","França",31,1.75,68.9,11,3,1)
+    L[1] = novo Lutador("Putscript",29,1.68,57.8,14,2,3)
+    L[2] = novo Lutador("Snapshadow","EUA",35,1.65,80.9,12,2,1)
+    L[3] = novo Lutador("Dead Code","Australia",28,1.93,81.6,13,0,2)
+    L[4] = novo Lutador()
+    L[5] = novo Lutador()
+
+    L[0].apresentar
+
+    UEC01 = nova Luta()
+    UEC01.marcarLuta(L[0],L[1])
